@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex relative mt-[5rem]">
+      <div className="flex relative mt-[6rem]">
         <SideMenu className="fixed top-0 overflow-y-auto" />
-        {/* Main content dengan padding kiri */}
-        <div className="flex-1 py-[3rem] md:pl-[25%] px-[1.5rem] ">
+        {/* main content */}
+        <div className="py-[3rem] md:pl-[30%] px-[1.5rem] w-[80%]">
           <h1 className="text-3xl font-semibold mb-[1.5rem]">Latest Feeds</h1>
           <FeedCard />
           <FeedCard />

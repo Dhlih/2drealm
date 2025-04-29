@@ -6,14 +6,16 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div></div>
-      <div className="flex">
-        <SideMenu />
-        {/* main content */}
-        <div className="md:w-[50%] w-full py-[3rem] md:ml-[-2rem] md:px-0 px-[1.5rem] relative">
+      <div className="flex relative mt-[5rem]">
+        <SideMenu className="fixed top-0 overflow-y-auto" />
+        {/* Main content dengan padding kiri */}
+        <div className="flex-1 py-[3rem] md:pl-[25%] px-[1.5rem] ">
           <h1 className="text-3xl font-semibold mb-[1.5rem]">Latest Feeds</h1>
           <FeedCard />
           <FeedCard />
+          {[...Array(10)].map((_, i) => (
+            <FeedCard key={i} />
+          ))}
         </div>
       </div>
     </>

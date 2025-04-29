@@ -16,46 +16,42 @@ const SideMenu = () => {
   ];
 
   return (
-    <div className="md:px-[6rem] px-[3.5rem] py-[3rem] text-white/75 text-lg md:w-[30%] md:block hidden fixed overflow-scroll ">
-      <div className="space-y-[1rem]">
-        <div>
-          <span>Feeds</span>
-          <ul className="mt-2 space-y-2">
-            {feeds.map((feed) => (
-              <li
-                key={feed}
-                className={`px-[1rem] rounded-md cursor-pointer py-[2px]${
-                  isActive === feed ? "bg-secondary" : "bg-none"
-                } `}
-                onClick={() => {
-                  setIsActive(feed);
-                  console.log(isActive, feed);
-                }}
-              >
-                <button className=" cursor-pointer">{feed}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div className="w-full relative ">
+      <div className="md:px-[6rem] py-[3rem] text-white/75 text-lg md:w-[25%] md:block hidden fixed h-screen top-[10rem] left-0 overflow-y-auto">
+        <div className="space-y-[1rem] pr-[2rem]">
+          <div>
+            <span className="font-semibold">Feeds</span>
+            <ul className="mt-2 space-y-2">
+              {feeds.map((feed) => (
+                <li
+                  key={feed}
+                  className={`px-[1rem] rounded-md cursor-pointer py-[2px] ${
+                    isActive === feed ? "bg-secondary" : "hover:bg-white/10"
+                  }`}
+                  onClick={() => setIsActive(feed)}
+                >
+                  {feed}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div>
-          <span>Categories</span>
-          <ul className="mt-2 space-y-2">
-            {categories.map((feed) => (
-              <li
-                key={feed}
-                className={`px-[1rem] rounded-md cursor-pointer py-[2px] ${
-                  isActive === feed ? "bg-secondary " : "bg-none"
-                } `}
-                onClick={() => {
-                  setIsActive(feed);
-                  console.log(isActive, feed);
-                }}
-              >
-                <button className=" cursor-pointer">{feed}</button>
-              </li>
-            ))}
-          </ul>
+          <div className="pt-4">
+            <span className="font-semibold">Categories</span>
+            <ul className="mt-2 space-y-2">
+              {categories.map((category) => (
+                <li
+                  key={category}
+                  className={`px-[1rem] rounded-md cursor-pointer py-[2px] ${
+                    isActive === category ? "bg-secondary" : "hover:bg-white/10"
+                  }`}
+                  onClick={() => setIsActive(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import { useState } from "react";
 const FeedCard = () => {
   const [isSave, setIsSave] = useState(false);
   return (
-    <div className="w-full bg-secondary py-[1.2rem] px-[1.5rem] rounded-lg mb-[2rem]">
+    <div className="w-full bg-secondary py-[1.2rem] px-[1.5rem] rounded-xl mb-[2rem]">
       <div>
         <div>
           {/* user profile */}
@@ -30,7 +30,7 @@ const FeedCard = () => {
         </div>
 
         {/* text group */}
-        <div className="space-y-[2px]">
+        <div className="space-y-[5px]">
           <h3 className="text-xl font-medium">Apa Anime Terbaik Menurutmu?</h3>
           <p className="text-white/75 max-w-[90%]">
             Penasaran sama judul anime terbaik versi kalian, soalnya gw
@@ -39,7 +39,7 @@ const FeedCard = () => {
         </div>
 
         {/* metrics */}
-        <div className="flex justify-between mt-[0.9rem]">
+        <div className="flex justify-between mt-[1rem]">
           <div className="flex space-x-[2rem] items-center">
             <div className="flex items-center space-x-3">
               <IoEyeOutline className="text-xl cursor-pointer" />

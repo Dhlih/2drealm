@@ -6,9 +6,9 @@ const postSchema = new Schema(
     description: String,
     category: String,
     writer: String,
-    totalView: Number,
-    totalLikes: Number,
-    totalReplies: Number,
+    totalView: { type: Number, default: 0 },
+    totalLikes: { type: Number, default: 0 },
+    totalReplies: { type: Number, default: 0 },
   },
   {
     timestamps: true,

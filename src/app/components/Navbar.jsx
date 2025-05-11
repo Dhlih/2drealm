@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(async () => {
     const fetchUser = async () => {
       const session = await getSession();
-      setUser(session);
+      setUser(session.user);
     };
     fetchUser();
   }, []);

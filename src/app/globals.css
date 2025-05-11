@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
+
+html {
+  font-family: "Overpass", sans-serif;
+}
+
 body {
   background-color: #080e13;
   color: white;
+  font-family: "Overpass", sans-serif;
 }
 
 @theme {

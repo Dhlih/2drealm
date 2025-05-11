@@ -5,16 +5,26 @@ import { FaRegComment } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { FaBookmark } from "react-icons/fa6";
+import { GoShareAndroid } from "react-icons/go";
+import axios from "axios";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 
-const FeedCard = ({ post }) => {
+const PostDetail = ({ post, scrollToComment, setIsComment }) => {
   const [isSave, setIsSave] = useState(false);
-  console.log(post);
+
+  useEffect(() => {
+    const updateView = async () => {
+      await axios.patch(`/api/posts/${post._id}/view`);
+    };
+    updateView();
+  }, []);
+
   return (
-    <div className="w-full bg-secondary py-[1.2rem] px-[1.5rem] rounded-xl mb-[2rem]">
-      <div>
+    <div className="w-full ">
+      <h3 className="text-2xl font-semibold mb-1 ">{post.title}</h3>
+
+      <div className="bg-secondary py-[1.2rem] px-[1.5rem] rounded-xl mb-[2rem] mt-[1.5rem]">
         <div>
           {/* user profile */}
           <div className="flex justify-between items-center mb-[0.6rem]">
@@ -35,27 +45,28 @@ const FeedCard = ({ post }) => {
 
         {/* text group */}
         <div className="mt-4">
-          <Link href={`/posts/${post._id}`} prefetch={false}>
-            <h3 className="text-xl font-medium mb-1">{post.title}</h3>
-          </Link>
-          <p className="text-white/75 max-w-[90%]">
-            {post.description.slice(0, 65)} ...
-          </p>
+          <p className="text-white/75 text-lg ">{post.description}</p>
         </div>
 
         {/* metrics */}
         <div className="flex justify-between mt-[1rem]">
-          <div className="flex space-x-[2rem] items-center">
-            <div className="flex items-center space-x-3">
-              <IoEyeOutline className="text-xl cursor-pointer" />
-              <span>{post.totalView}</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <FaRegComment className="cursor-pointer" />
-              <span>55</span>
+          <div className="flex items-center">
+            <div className="flex items-center space-x-[1rem]">
+              <div className="flex items-center space-x-3">
+                <FaRegHeart className="cursor-pointer" />
+                <span>170</span>
+              </div>
+              <button
+                className="cursor-pointer"
+                onClick={() => {
+                  setIsComment(true);
+                  scrollToComment();
+                }}
+              >
+                Reply
+              </button>
             </div>
           </div>
-
           {/* save post button */}
           {!isSave ? (
             <IoBookmarkOutline
@@ -74,4 +85,4 @@ const FeedCard = ({ post }) => {
   );
 };
 
-export default FeedCard;
+export default PostDetail;

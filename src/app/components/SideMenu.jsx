@@ -16,7 +16,7 @@ const SideMenu = () => {
   ];
 
   return (
-    <div className="md:px-[6rem] py-[3rem] text-white/75 text-lg md:w-[35%] md:block hidden fixed h-[calc(100vh-6rem)]  top-25 left-0 overflow-y-auto scrollbar-hide">
+    <div className="md:px-[6rem] xl:px-[8rem] py-[3rem] text-white/75 text-lg md:w-[35%] md:block hidden fixed h-[calc(100vh-6rem)]  top-25 left-0 overflow-y-auto scrollbar-hide">
       <div className="pr-[2rem]">
         <div>
           <span className="font-semibold">Feeds</span>

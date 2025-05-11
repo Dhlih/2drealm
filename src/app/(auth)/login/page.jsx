@@ -7,10 +7,28 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { credentialLogin, googleLogin } from "@/app/lib/auth";
 
 const Login = () => {
   const [isHide, setIsHide] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = async (formdata) => {
+    const email = formdata.get("email");
+    const password = formdata.get("password");
+
+    const res = await credentialLogin(email, password);
+
+    if (res?.error) {
+      console.log("Login gagal:", res.error);
+      return;
+    }
+
+    router.push("/");
+  };
 
   const handleHidePassword = () => {
     setIsHide(!isHide);
@@ -18,33 +36,34 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div className="w-full h-screen flex items-center justify-center mt-[9rem] mb-[4rem]">
-        <div className="bg-secondary rounded-xl p-6 md:w-[32%] w-[70%] shadow-md ">
+        <div className="bg-secondary rounded-xl p-8 md:w-[35%] w-[70%] shadow-md ">
           <div className="text-center">
             <h3 className="text-2xl font-semibold mb-1">Welcome Back!</h3>
             <span className="text-white/75 w-full">Let’s get you back in.</span>
           </div>
 
           {/* input field */}
-          <div className="space-y-3 mt-6">
-            <div className="space-y-2 ">
+          <form className="space-y-3 mt-6" action={handleSubmit}>
+            <div className="space-y-1 ">
               <span className="block text-sm font-medium">Email</span>
               <div className="flex items-center justify-between bg-primary outline-1 outline-[#4a4a4a] rounded-lg py-2 px-5 ">
                 <input
-                  type="text"
+                  type="email"
                   className=" w-full text-sm outline-none"
+                  name="email"
                   placeholder="Enter email address"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <span className="block text-sm font-medium">Password</span>
               <div className="flex items-center justify-between bg-primary outline-1 outline-[#4a4a4a] rounded-lg py-2 px-5 space-x-6">
                 <input
                   type={isHide ? "text" : "password"}
                   className=" w-full text-sm outline-none"
+                  name="password"
                   placeholder="Enter password"
                 />
                 {!isHide ? (
@@ -60,13 +79,16 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <button className="w-full text-center p-2 bg-accent mt-4 rounded-lg text-black text-sm font-medium cursor-pointer">
+            <button
+              className="w-full text-center p-2 bg-accent mt-4 rounded-lg text-black text-sm font-medium cursor-pointer"
+              type="submit"
+            >
               Log In
             </button>
-          </div>
+          </form>
 
           {/* google option */}
-          <div className="mt-6">
+          <form className="mt-5" action={googleLogin}>
             <div className="flex items-center justify-between space-x-4">
               <div className="bg-white/50 w-[32%] h-[1px]"></div>
               <span className="text-sm">Or login with</span>
@@ -81,10 +103,10 @@ const Login = () => {
               />
               <span className="text-sm">Log in with Google</span>
             </button>
-          </div>
+          </form>
 
           {/* register */}
-          <div className="flex items-center justify-center mt-4 space-x-1">
+          <div className="flex items-center justify-center mt-6 space-x-1">
             <span className="text-sm block text-center">
               Don't have an account?{" "}
             </span>

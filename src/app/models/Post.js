@@ -6,7 +6,7 @@ const postSchema = new Schema(
     description: String,
     category: String,
     writer: String,
-    totalView: { type: Number, default: 0 },
+    totalViews: { type: Number, default: 0 },
     totalLikes: { type: Number, default: 0 },
     totalReplies: { type: Number, default: 0 },
   },

@@ -74,7 +74,7 @@ const Register = () => {
                 <input
                   type="email"
                   className="w-full text-sm outline-none"
-                  placeholder="Enter email address"
+                  placeholder="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
@@ -87,7 +87,7 @@ const Register = () => {
                 <input
                   type={isHide ? "password" : "text"}
                   className="w-full text-sm outline-none"
-                  placeholder="Enter password"
+                  placeholder="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />

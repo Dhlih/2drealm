@@ -46,25 +46,23 @@ const Login = () => {
           {/* input field */}
           <form className="space-y-3 mt-6" action={handleSubmit}>
             <div className="space-y-1 ">
-              <span className="block text-sm font-medium">Email</span>
               <div className="flex items-center justify-between bg-primary outline-1 outline-[#4a4a4a] rounded-lg py-2 px-5 ">
                 <input
                   type="email"
+                  placeholder="email"
                   className=" w-full text-sm outline-none"
                   name="email"
-                  placeholder="Enter email address"
                 />
               </div>
             </div>
 
             <div className="space-y-1">
-              <span className="block text-sm font-medium">Password</span>
               <div className="flex items-center justify-between bg-primary outline-1 outline-[#4a4a4a] rounded-lg py-2 px-5 space-x-6">
                 <input
                   type={isHide ? "text" : "password"}
                   className=" w-full text-sm outline-none"
                   name="password"
-                  placeholder="Enter password"
+                  placeholder="password"
                 />
                 {!isHide ? (
                   <IoEyeOutline

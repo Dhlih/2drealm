@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SideMenu = () => {
   const [isActive, setIsActive] = useState();
-  const feeds = ["Latest", "Trending", "Saved"];
+  const posts = ["Latest", "Trending", "Saved"];
   const categories = [
     "All",
     "Anime",
@@ -19,17 +19,17 @@ const SideMenu = () => {
     <div className="md:px-[6rem] xl:px-[8rem] py-[3rem] text-white/75 text-lg md:w-[35%] md:block hidden fixed h-[calc(100vh-6rem)]  top-25 left-0 overflow-y-auto scrollbar-hide">
       <div className="pr-[2rem]">
         <div>
-          <span className="font-semibold">Feeds</span>
+          <span className="font-semibold">Posts</span>
           <ul className="mt-2 space-y-2">
-            {feeds.map((feed) => (
+            {posts.map((post) => (
               <li
-                key={feed}
+                key={post}
                 className={`px-[1rem] rounded-md cursor-pointer py-[2px] ${
-                  isActive === feed ? "bg-secondary" : "hover:bg-white/10"
+                  isActive === post ? "bg-secondary" : "hover:bg-white/10"
                 }`}
-                onClick={() => setIsActive(feed)}
+                onClick={() => setIsActive(post)}
               >
-                {feed}
+                {post}
               </li>
             ))}
           </ul>
